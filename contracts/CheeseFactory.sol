@@ -127,7 +127,7 @@ contract CheeseFactory is UpgradableProduct, ReentrancyGuard {
 		Pool storage pool = poolInfo[poolName_];
 		require(msg.sender == pool.pool, 'Permission denied');
 		_updateTotalAmount();
-		uint256 poolTotal = totalMintAmount.mul(pool.weight).div(TOTAL_WEIGHT); // Todo: total weight should cal from each pools?
+		uint256 poolTotal = totalMintAmount.mul(pool.weight).div(TOTAL_WEIGHT);
 		uint256 amount = poolTotal.sub(pool.minted);
 		if (amount > 0) {
 			token.mint(msg.sender, amount);
