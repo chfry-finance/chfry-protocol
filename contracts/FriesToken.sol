@@ -144,7 +144,6 @@ contract FriesToken is AccessControl, ERC20('Fry USD', 'FUSD') {
 	 *
 	 */
 	function lowerHasMinted(uint256 amount) public onlyWhitelisted {
-		// TODO
 		if (hasMinted[msg.sender] < amount) {
 			hasMinted[msg.sender] = 0;
 		} else {

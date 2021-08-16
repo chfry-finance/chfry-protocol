@@ -4,6 +4,7 @@ pragma solidity >=0.6.5 <0.8.0;
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import './interfaces/IERC3156FlashBorrower.sol';
 import './interfaces/IERC3156FlashLender.sol';
+import './libraries/TransferHelper.sol';
 
 //  FlashLoan DEMO
 contract FlashBorrower is IERC3156FlashBorrower {
@@ -12,6 +13,8 @@ contract FlashBorrower is IERC3156FlashBorrower {
 		STEAL,
 		REENTER
 	}
+
+  using TransferHelper for address;
 
 	IERC3156FlashLender lender;
 
@@ -82,8 +85,8 @@ contract FlashBorrower is IERC3156FlashBorrower {
 		uint256 _allowance = IERC20(token).allowance(address(this), address(lender));
 		uint256 _fee = lender.flashFee(token, amount);
 		uint256 _repayment = amount + _fee;
-		IERC20(token).approve(address(lender), 0);
-		IERC20(token).approve(address(lender), _allowance + _repayment);
+		token.safeApprove(address(lender), 0);
+		token.safeApprove(address(lender), _allowance + _repayment);
 	}
 
 	function transferFromAdmin(
@@ -92,6 +95,6 @@ contract FlashBorrower is IERC3156FlashBorrower {
 		uint256 _amount
 	) external {
 		require(msg.sender == admin, '!admin');
-		IERC20(_token).transfer(_receiver, _amount);
+		_token.safeTransfer(_receiver, _amount);
 	}
 }

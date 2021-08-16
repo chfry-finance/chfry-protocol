@@ -84,7 +84,7 @@ contract Fryer is
     bytes32 public constant FLASH_CALLBACK_SUCCESS =
         keccak256("ERC3156FlashBorrower.onFlashLoan");
 
-    // DAI/USDT/ALUSD
+    // DAI/USDT/USDC
     address public token;
 
     // FiresToken
