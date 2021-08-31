@@ -6,7 +6,7 @@ pragma experimental ABIEncoderV2;
 import '@openzeppelin/contracts/access/AccessControl.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
-contract FriesToken is AccessControl, ERC20('Fry USD', 'FUSD') {
+contract FriesToken is AccessControl, ERC20('fryUSD', 'fUSD') {
 	using SafeMath for uint256;
 
 	/// @dev The identifier of the role which maintains other roles.
@@ -144,7 +144,6 @@ contract FriesToken is AccessControl, ERC20('Fry USD', 'FUSD') {
 	 *
 	 */
 	function lowerHasMinted(uint256 amount) public onlyWhitelisted {
-		// TODO
 		if (hasMinted[msg.sender] < amount) {
 			hasMinted[msg.sender] = 0;
 		} else {
