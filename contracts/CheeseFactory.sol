@@ -61,8 +61,8 @@ contract CheeseFactory is UpgradableProduct, ReentrancyGuard {
 		require(!initialized, 'already initialized');
 		require(startTimestamp_ >= block.timestamp, '!startTime');
 		// weight
-		poolInfo[ConfigNames.PRIVATE] = Pool(private_, 1000, 0);
-		poolInfo[ConfigNames.STAKE] = Pool(stake_, 9000, 0);
+		poolInfo[ConfigNames.PRIVATE] = Pool(private_, 1066, 0);
+		poolInfo[ConfigNames.STAKE] = Pool(stake_, 8934, 0);
 		initialized = true;
 		startTimestamp = startTimestamp_;
 		lastTimestamp = startTimestamp_;
