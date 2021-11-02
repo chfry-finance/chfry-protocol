@@ -1,4 +1,4 @@
-CHFRY Finance is hosting a bug bounty program on Immunefi with bounties up to $100,000: https://www.immunefi.com/bounty/chfry
+CHFRY Finance is hosting a bug bounty program on Immunefi with bounties up to $100,000: https://immunefi.com/bounty/chfryfinance/
 
 If you have discovered any threats or vulnerabilities in our project, please submit it through Immunefi's platform.
 
